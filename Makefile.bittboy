@@ -1,0 +1,23 @@
+PROG = haunted
+NAME = HauntedHouse
+OBJS = renderer.o
+
+ARCH = arm-linux-
+CC = $(ARCH)gcc
+BINBASE = /opt/miyoo/bin/
+SYSROOT = $(shell $(CC) --print-sysroot)
+
+SDL_CFLAGS  := $(shell $(BINBASE)pkg-config --cflags sdl)
+SDL_LIBS    := $(shell $(BINBASE)pkg-config --libs sdl)
+CFLAGS = $(SDL_CFLAGS) -O2 -DBITTBOY
+LDFLAGS = $(SDL_LIBS)
+
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(PROG): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(PROG) sdl-$(PROG).c
+
+clean:
+	rm -f $(PROG) *.o

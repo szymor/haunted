@@ -2,7 +2,7 @@
 #include "SDL.h"
 
 
-SDL_Surface* screen;
+extern SDL_Surface* screen;
 
 gfx_texture  gfx_frame_buffer = { NULL, display_width, display_height };
 gfx_texture* gfx_render_target = &gfx_frame_buffer;

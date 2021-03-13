@@ -1382,6 +1382,16 @@ char getkey()
             exit(0);
         }
 
+#ifdef BITTBOY
+        if(event.key.keysym.sym == SDLK_LALT)    return 'A';
+        if(event.key.keysym.sym == SDLK_LCTRL)   return 'B';
+        if(event.key.keysym.sym == SDLK_LSHIFT)  return 'X';
+        if(event.key.keysym.sym == SDLK_SPACE)   return 'Y';
+        if(event.key.keysym.sym == SDLK_UP)      return 'N';
+        if(event.key.keysym.sym == SDLK_RIGHT)   return 'E';
+        if(event.key.keysym.sym == SDLK_DOWN)    return 'S';
+        if(event.key.keysym.sym == SDLK_LEFT)    return 'W';
+#else
         if(event.key.keysym.sym == SDLK_LCTRL)  return 'A';
         if(event.key.keysym.sym == SDLK_LALT)   return 'B';
         if(event.key.keysym.sym == SDLK_SPACE)  return 'X';
@@ -1390,6 +1400,7 @@ char getkey()
         if(event.key.keysym.sym == SDLK_RIGHT)  return 'E';
         if(event.key.keysym.sym == SDLK_DOWN)   return 'S';
         if(event.key.keysym.sym == SDLK_LEFT)   return 'W';
+#endif
 
         // Didn't recognize the input
     }
